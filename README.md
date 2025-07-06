@@ -6,7 +6,7 @@ A full-stack application to manage projects and their associated tasks. Built us
 - Vite + React + TypeScript for the frontend
 - Node.js + Express + MongoDB for the backend
 - Secure JWT-based authentication
-- Full CRUD for Projects and Tasks
+- CRUD for Projects and Tasks
 - Reusable modals and responsive UI using Tailwind CSS
 
 ## Folder Structure
@@ -35,7 +35,7 @@ project-root/
 
 ## Features
 
-- User Authentication (SignUp / Login)
+- User Authentication (SignUp / SignIn)
 - JWT Token Management
 - Project CRUD
 - Task CRUD (inside Project Detail)
@@ -62,17 +62,21 @@ project-root/
 ```bash
 cd backend
 npm install
+
 # Add .env file
-npm run dev
+npm start
+
+# For Seed
+npm run seed
 ```
 
 .env example:
 
 ```
 PORT=8000
-MONGODB_URI=mongodb://localhost:27017/project-manager
-JWT_TOKEN_SECRET_KEY=your_jwt_secret
-JWT_EXPIRY=1d
+MONGODB_URI=mongodb://0.0.0.0:27017/dbName
+JWT_TOKEN_SECRET_KEY=your_jwt_secret_token_12345
+JWT_EXPIRY=7d
 ```
 
 ### 2. Frontend
@@ -94,34 +98,27 @@ const api = axios.create({
 ## API Endpoints
 
 ### Auth
-
 | Method | Endpoint         | Description     |
 |--------|------------------|-----------------|
 | POST   | /auth/signUp     | Register user   |
 | POST   | /auth/signIn     | Login + token   |
 
 ### Projects
-
-| Method | Endpoint        | Description            |
-|--------|------------------|------------------------|
-| GET    | /projects        | Get all user projects  |
-| POST   | /projects        | Create new project     |
-| PUT    | /projects/:id    | Update project         |
-| DELETE | /projects/:id    | Delete project         |
+| Method | Endpoint             | Description            |
+|--------|----------------------|------------------------|
+| GET    | /project/getAll      | Get all user projects  |
+| GET    | /project/get/:id     | Get Single project     |
+| POST   | /project/create      | Create new project     |
+| PATCH  | /project/update/:id  | Update project         |
+| DELETE | /project/delete/:id  | Delete project         |
 
 ### Tasks
-
-| Method | Endpoint                | Description              |
+| Method | Endpoint                 | Description              |
 |--------|--------------------------|--------------------------|
-| GET    | /tasks/byProject/:id     | Get all tasks in project |
-| POST   | /tasks                   | Create task              |
-| PUT    | /tasks/:id               | Update task              |
-| DELETE | /tasks/:id               | Delete task              |
+| GET    | /task/get/:id            | Get all tasks in project |
+| POST   | /task/create             | Create task              |
+| PATCH  | /task/update/:id         | Update task              |
+| DELETE | /task/delete/:id         | Delete task              |
 
 ## Author
-
-Made by [Your Name]
-
-## License
-
-MIT License
+Made by Rohit Singh
