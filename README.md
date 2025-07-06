@@ -60,7 +60,7 @@ project-root/
 ### 1. Backend
 
 ```bash
-cd backend
+cd Server
 npm install
 
 # Add .env file
@@ -82,7 +82,7 @@ JWT_EXPIRY=7d
 ### 2. Frontend
 
 ```bash
-cd frontend
+cd Client
 npm install
 npm run dev
 ```
